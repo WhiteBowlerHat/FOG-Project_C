@@ -37,5 +37,10 @@ La taille du message (ou de l'information transmise) est un point clé pour le p
 |-|-|-|
 |Lettre (1 octet) | Taille (n-octets) | Lettre (1 octet) 
 
-###3. Le nonce
-Le nonce (ou _number used once_), est une valeur clé pour la mise en place du générateur de nombres pseudo-aléatoire. 
+### 3. Le nonce
+Le nonce (ou _number used once_), est une valeur clé pour la mise en place du générateur de nombres pseudo-aléatoire. De ce fait, on ne peut le transmettre avec le message directement puisqu'il permet de le déchiffrer. Une première proposition était de l'inclure dans les meta-données de l'image. Cependant ce serait "visible" assez facilement. La seconde option est de le placer selon la clef mais cela causerait des vulnérabilité sur la clef elle-même. Il est de 192 bits (soit 24 octets). Nous conserverons la première option dans un premier temps.
+
+### 4. L'indentificateur d'image
+Afin de définir quelle image traiter en premier, puis en second, etc... Il faut définir un identificateur d'image (1,2,3,..)
+Nous utiliserons les méta-données de l'image dans un premier temps. Une fois, que nous aurons codés le coeur de l'algorithme nous pourrons coder un algorithme d'identification pour traiter l'image.
+
