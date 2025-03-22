@@ -26,6 +26,7 @@ _Pour décrire un fichier .mp4:_
 | Indicateur de standard | Caractère de scission | Taille | Caractère de scission | Contenu du type de fichier | 
 |-|-|-|-|-|
 |0 |-|-|-|01101101 01110000 00110100 ( = mp4)|
+
 _Pour définir un fichier de type .supertypedefichier:_
 | Indicateur de standard | Caractère de scission | Taille | Caractère de scission | Contenu du type de fichier | 
 |-|-|-|-|-|
