@@ -6,7 +6,6 @@ Here is a simple flow chart:
 flowchart LR;
     Clef-->CSPRNG;
     Nonce-->CSPRNG;
-    B{0,0,0,0,...} e1@==> CSPRNG;
-    CSPRNG --> C{1,9,4,2...};
-    e1@{ animate: true }
+    B[0,0,0,0,...] --> CSPRNG;
+    CSPRNG --> C[1,9,4,2...];
 ```
