@@ -3,8 +3,10 @@
 Here is a simple flow chart:
 
 ```mermaid
-graph TD;
+flowchart LR;
     Clef-->CSPRNG;
     Nonce-->CSPRNG;
-    CSRNG-->Sortie;
+    B[0,0,0,0,...] e1@==> CSPRNG
+    CSPRNG e1@==> C[1,9,4,2...]
+    e1@{ animate: true }
 ```
