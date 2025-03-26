@@ -7,6 +7,6 @@ flowchart LR;
     Clef-->CSPRNG;
     Nonce-->CSPRNG;
     B[0,0,0,0,...] e1@==> CSPRNG;
-    CSPRNG e1@==> C[1,9,4,2...];
+    CSPRNG --> C[1,9,4,2...];
     e1@{ animate: true }
 ```
