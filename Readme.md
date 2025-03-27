@@ -11,7 +11,6 @@ flowchart LR;
         n2["Nonce"];
         
   end;
-    A["0,0,0,0,..."] --> XOR@{ shape: cross-circ, label: "Summary" };
-    s1 --> XOR;
-    XOR --> ["2,8,9,4,..."]
+    A["0,0,0,0,..."] --> s1;
+    s1 --> B["0,2,9,1,..."];
 ```
