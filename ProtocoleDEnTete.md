@@ -1,4 +1,4 @@
-# Protocole FOG
+# Protocole
 Lors de mes recherches sur quel genre de messages je voulais cacher dans les images, je voulais faire en sorte de démocratiser le programme un maximum, c'est à dire, transmettre le plus d'informations possible et n'importe quel type d'information. 
 
 ## _Pourquoi un protocole est nécessaire ?_
