@@ -8,22 +8,22 @@ Générateur de nombre pseudo-aléatoire.
 
 ## Fonctionnement
 ### 1. Chiffrement
-1.1. Définir le dossier de banque d'images
-1.2. Créér un GNPA pour ordonner les images 
-1.3. Définir l'ordre des images à l'aide du GNPA
-1.4. Définir l'en-tête du protocole
-1.5. Créer un GNPA de distribution de position
-1.6. Distribuer l'en-tête
-1.7. Distribuer le contenu du fichier bite par bit
+1. Définir le dossier de banque d'images
+2. Créér un GNPA pour ordonner les images 
+3. Définir l'ordre des images à l'aide du GNPA
+4. Définir l'en-tête du protocole
+5. Créer un GNPA de distribution de position
+6. Distribuer l'en-tête
+7. Distribuer le contenu du fichier bite par bit
 
 ### 2. Déchiffrement
-2.1. Définir le dossier de banque d'images
-2.2. Créér un GNPA pour ordonner les images 
-2.3. Définir l'ordre des images à l'aide du GNPA
-2.4. Créer un GNPA de distribution de position
-2.5. Obtenir les informations de l'en-tête
-2.6. Obtenir le contenu du fichier en binaire
-2.7. Réassemblage du fichier et ajout de l'extension
+1. Définir le dossier de banque d'images
+2. Créér un GNPA pour ordonner les images 
+3. Définir l'ordre des images à l'aide du GNPA
+4. Créer un GNPA de distribution de position
+5. Obtenir les informations de l'en-tête
+6. Obtenir le contenu du fichier en binaire
+7. Réassemblage du fichier et ajout de l'extension
 
 
 ## Annexe : Fonctionnement XChacha20
