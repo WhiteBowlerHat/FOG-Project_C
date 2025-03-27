@@ -3,8 +3,8 @@
 
 ## Pré-requis
 ### Définition
-**GNPA :** 
-Générateur de nombre pseudo-aléatoire. 
+**GNPA (SC):** 
+Générateur de nombre pseudo-aléatoire (Sécurisé Cryptographiquement).
 
 ## Fonctionnement
 ### 1. Chiffrement
