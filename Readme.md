@@ -4,9 +4,13 @@ Here is a simple flow chart:
 
 ```mermaid
 flowchart LR;
-    Clef-->CSPRNG;
-    Nonce-->CSPRNG;
-    B[0,0,0,0,...] e1@--> CSPRNG;
-    CSPRNG --> C[1,9,4,2...];
-    e1@{ animate: true };
+ subgraph s1["GNPA (SC)"];
+    direction LR;
+        n3["Constante"];
+        n1["Cléf secrète"];
+        n2["Nonce"];
+        
+  end;
+    A["0,0,0,0,..."] --> s1;
+    s1 --> B["0,2,9,1,..."];
 ```
