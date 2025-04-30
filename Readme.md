@@ -17,7 +17,7 @@ Générateur de nombre pseudo-aléatoire (Sécurisé Cryptographiquement).
 4. Définir l'en-tête du protocole
 5. Créer un GNPA de distribution de position
 6. Distribuer l'en-tête
-7. Distribuer le contenu du fichier bite par bit
+7. Distribuer le contenu du fichier bit par bit
 
 ### 2. Déchiffrement
 1. Définir le dossier de banque d'images
