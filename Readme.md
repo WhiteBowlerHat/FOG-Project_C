@@ -1,5 +1,8 @@
 # Projet Fog
 ## Objectif
+L'objectif du projet Fog est de dissimuler de manière pseudo sécurisée un fichier quel qu'il soit dans une banque d'images. 
+Les images pourront ensuites être transmise via divers canaux de communication et une fois toutes les images receptionnée, le destinataire peut déchiffrer ces dernières.
+Le programme utilisera un algorithme de chiffrement symétrique pour obtenir ces resultats.
 
 ## Pré-requis
 ### Définition
