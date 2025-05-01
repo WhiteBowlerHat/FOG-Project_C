@@ -1,41 +1,40 @@
 #include <stdio.h>
-#include <stdint.h>
+#include <string.h>
 
-#define BLOCK_SIZE 1024 // Taille du bloc de lecture
+// Prototypes
+void fog(void);
+void wind(void);
 
-void process_bit(int bit) {
-    // Exemple : afficher le bit
-    printf("%d", bit);
-}
+int main(void) {
+    char choice[10];
 
-// --- Description ---
-// Ouvre un fichier et lit le contenu bit par bit
-// --- Fonction appelées ---
-// -> process_bit(int bit)
-void process_file(const char *filename) {
-    FILE *file = fopen(filename, "rb");
-    if (!file) {
-        perror("Erreur d'ouverture du fichier");
-        return;
+    printf("Souhaitez-vous encrypter ou décrypter ? (e/d): ");
+    if (fgets(choice, sizeof(choice), stdin) == NULL) {
+        fprintf(stderr, "Erreur de lecture.\n");
+        return 1;
     }
 
-    uint8_t buffer[BLOCK_SIZE]; // Allocation sur la pile
-    size_t bytes_read;
+    // Supprimer le saut de ligne éventuel
+    choice[strcspn(choice, "\n")] = 0;
 
-    while ((bytes_read = fread(buffer, 1, BLOCK_SIZE, file)) > 0) {
-        for (size_t i = 0; i < bytes_read; i++) {
-            for (int j = 7; j >= 0; j--) {
-                int bit = (buffer[i] >> j) & 1; // Extraire le j-ème bit
-                process_bit(bit);
-            }
-        }
+    if (strcmp(choice, "e") == 0 || strcmp(choice, "encrypter") == 0) {
+        fog();
+    } else if (strcmp(choice, "d") == 0 || strcmp(choice, "decrypter") == 0) {
+        wind();
+    } else {
+        printf("Choix invalide. Utilisez 'e' pour encrypter ou 'd' pour décrypter.\n");
+        return 1;
     }
 
-    fclose(file);
-}
-
-int main() {
-    const char *filename = "SimarisSigilGold.png";
-    process_file(filename);
     return 0;
+}
+
+void fog(void) {
+    printf("Fonction d'encryptage exécutée (fog).\n");
+    // Ici tu implémenteras l'encryptage réel plus tard
+}
+
+void wind(void) {
+    printf("Fonction de décryptage exécutée (wind).\n");
+    // Ici tu implémenteras le décryptage réel plus tard
 }
