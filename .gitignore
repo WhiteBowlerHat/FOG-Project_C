@@ -1,2 +1,4 @@
 resources/image_bank/*
 !resources/image_bank/.gitkeep
+test/*
+!test/.gitkeep
