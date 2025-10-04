@@ -14,7 +14,12 @@ void wind(void);
 uint8_t *encode_file_type(const char *filename, size_t *out_len);
 uint8_t *encode_file_size(size_t file_size, size_t *out_len);
 int is_image_file(const char *filename);
-unsigned int *assign_bits_to_images(size_t total_bits, unsigned int *order, size_t order_len);
+unsigned int *assign_bits_to_images_xchacha(
+    size_t total_bits,
+    size_t n_images,
+    const unsigned char *key,   // 32 octets
+    const unsigned char *nonce  // 24 octets
+);
 
 int main(void) {
     char choice[10];
@@ -223,14 +228,9 @@ void fog(void) {
         printf("Capacité suffisante pour encoder le message.\n");
     }
     
-    unsigned int *bit_image_map = assign_bits_to_images(total_message_bits, order, img_count);
-    if (!bit_image_map) {
-        // libérer la mémoire avant de quitter
-        for (size_t i = 0; i < img_count; ++i) free(img_paths[i]);
-        free(img_paths);
-        free(order);
-        return;
-    }
+    unsigned int *bit_image_map = assign_bits_to_images_xchacha(
+        total_message_bits, img_count, key, nonce
+    );
 
     // Affichage des premières assignations pour debug
     printf("Premiers bits affectés aux images (index dans img_paths) :\n");
@@ -342,17 +342,35 @@ int is_image_file(const char *filename) {
     return strcmp(ext, ".png") == 0;// || strcmp(ext, ".bmp") == 0 || strcmp(ext, ".jpg") == 0 || strcmp(ext, ".jpeg") == 0;
 }
 
-unsigned int *assign_bits_to_images(size_t total_bits, unsigned int *order, size_t order_len) {
+
+
+unsigned int *assign_bits_to_images_xchacha(
+    size_t total_bits,
+    size_t n_images,
+    const unsigned char *key,   // 32 octets
+    const unsigned char *nonce  // 24 octets
+) {
+    if (n_images == 0) return NULL;
     unsigned int *bit_assignments = malloc(sizeof(unsigned int) * total_bits);
     if (!bit_assignments) {
         fprintf(stderr, "Erreur d'allocation mémoire pour les assignations de bits.\n");
         return NULL;
     }
 
+    // Générer un flux pseudo-aléatoire
+    size_t rand_len = total_bits * sizeof(uint32_t);
+    uint32_t *rand_stream = malloc(rand_len);
+    if (!rand_stream) {
+        free(bit_assignments);
+        return NULL;
+    }
+    crypto_stream_xchacha20((unsigned char*)rand_stream, rand_len, nonce, key);
+
+    // Assigner chaque bit à une image aléatoire
     for (size_t i = 0; i < total_bits; ++i) {
-        size_t image_index = i % order_len;               // boucle sur l'ordre
-        bit_assignments[i] = order[image_index];          // image pseudo-aléatoire correspondante
+        bit_assignments[i] = rand_stream[i] % n_images;
     }
 
+    free(rand_stream);
     return bit_assignments;
 }

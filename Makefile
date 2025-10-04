@@ -4,15 +4,16 @@ BUILD_DIR = build
 
 # Fichier source et cible
 SRC_FILE = $(SRC_DIR)/fog.c
+LIB_FILE = $(SRC_DIR)/lodepng.c
 OUTPUT = $(BUILD_DIR)/fog
 
 # Cible par défaut
 all: $(OUTPUT)
 
 # Compilation
-$(OUTPUT): $(SRC_FILE)
+$(OUTPUT): $(SRC_FILE) $(LIB_FILE)
 	mkdir -p $(BUILD_DIR)
-	gcc $(SRC_FILE) -o $(OUTPUT) -lsodium
+	gcc $(SRC_FILE) $(LIB_FILE) -o $(OUTPUT) -lsodium
 
 # Nettoyage
 clean:
